@@ -42,4 +42,84 @@ Data objects can be separated into two main categories:
 - vector: a finite set of values of a given type (like integers)
 - list: a finite set of vectors (possibly of different types)
 
+### Numerical vectors
+
+```{r}
+x <- 2
+x
+## x is a numeric vector
+class(x)
+## the type of x content is double
+typeof(x)
+```
+
+```{r}
+y <- 2L ## make clear to R that 2 is an integer (add L)
+y
+## y is a integer vector
+class(y)
+## the type of y content is integer
+typeof(y)
+```
+
+```{r}
+## square root calculation
+z <- sqrt(y)
+class(z)
+typeof(z)
+z
+```
+
+```{r}
+## c is a construction function
+x2 <- c(-2, 3, -1.5)
+class(x2)
+typeof(x2)
+x2
+```
+
+Most of the functions operate in vectorized mode, i.e. their actions are applied
+to each element of a vector independently from the other elements.
+
+```{r}
+## absolute value
+y2 <- abs(x2)
+y2
+```
+
+```{r}
+sqrt(abs(x2))
+```
+
+```{r}
+#| warning: false
+sqrt(x2)
+```
+
+The special value `NaN` stands for *Not a Number* and is used when a numerical 
+value cannot be associated to a mathematical expression. 
+
+#### Numerical expressions
+
+```{r}
+x3 <- c(1, 2, -4)
+y3 <- c(-1, 7, 42)
+x3 + y3
+```
+
+```{r}
+## vectorized product
+x3 * y3
+```
+
+```{r}
+z3 <- (x3 * y3) / (x3 + y3)
+z3
+```
+
+```{r}
+z3 + abs(z3)
+z3 + x3
+```
+
 
