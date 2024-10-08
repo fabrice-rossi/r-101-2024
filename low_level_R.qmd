@@ -122,4 +122,88 @@ z3 + abs(z3)
 z3 + x3
 ```
 
+### Individual access
+
+```{r}
+## sequence from 0 to 5 (both included) with 0.5 increment (default 1)
+x <- seq(0, 5, 0.5)
+x
+```
+
+```{r}
+length(x)
+```
+
+```{r}
+## access to the third value in x
+x[3]
+```
+
+```{r}
+## out of range access gives NA
+x[12]
+```
+
+The special value `NA` stands for `Not Available`. It is used for missing data
+for instance.
+
+```{r}
+class(x[12])
+typeof(x[12])
+```
+
+```{r}
+## access to multiple values (sub-vector)
+x[c(2, 4, 10)]
+```
+
+```{r}
+## access to multiple values (sub-vector)
+## negative values "remove" non wanted values
+x[c(-2, -4, -10)]
+```
+
+```{r}
+## a:b represents in a very efficient way the sequence from a to b (included) with
+## 1 increment
+x[4:8]
+```
+
+### Reusing values
+
+```{r}
+x1 <- 5
+x2 <- seq(0, 4)
+x1
+x2
+```
+
+```{r}
+x1 + x2 ## ??
+```
+
+```{r}
+x2 + 1
+```
+
+```{r}
+2 * x2 - 1
+```
+
+```{r}
+1 / x2
+```
+
+```{r}
+y <- seq(0, 5)
+z <- c(1, -1)
+y + z
+```
+
+```{r}
+y <- seq(0, 4)
+z <- c(1, -1)
+y + z
+```
+
 
