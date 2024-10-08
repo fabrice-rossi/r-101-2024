@@ -35,4 +35,11 @@ class(class)
 If `f` is a function, `f(...)` applies the function to its parameters while 
 `f` is the function as an object. 
 
+## Data
+
+Data objects can be separated into two main categories:
+
+- vector: a finite set of values of a given type (like integers)
+- list: a finite set of vectors (possibly of different types)
+
 
