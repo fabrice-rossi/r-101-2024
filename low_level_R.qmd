@@ -169,6 +169,15 @@ x[c(-2, -4, -10)]
 x[4:8]
 ```
 
+```{r}
+x <- seq(-5, 5)
+x[x > 0]
+y <- seq(1, 11)
+x[y / 3 < x]
+x[c(TRUE, FALSE)]
+```
+
+
 ### Reusing values
 
 ```{r}
@@ -375,8 +384,8 @@ Access to elements of the list is different should not be confused to sublist
 extraction.
 
 ```{r}
-x[1]    ## sublist
-x[[1]]  ## element
+x[1] ## sublist
+x[[1]] ## element
 ```
 
 ```{r}
