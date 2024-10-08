@@ -351,3 +351,66 @@ y
 mean(y)
 sd(y)
 ```
+
+## List
+A list is a collection of vectors that may have different types.
+
+### Basic operations
+```{r}
+x <- list(c(1, 2, 3), c("x", "y"), TRUE)
+x
+```
+
+```{r}
+class(x)
+typeof(x)
+```
+
+```{r}
+length(x)
+lengths(x) ## length applied to each element of the list
+```
+
+Access to elements of the list is different should not be confused to sublist
+extraction.
+
+```{r}
+x[1]    ## sublist
+x[[1]]  ## element
+```
+
+```{r}
+class(x[1])
+length(x[1])
+class(x[[1]])
+length(x[[1]])
+```
+
+```{r}
+x[-1]
+```
+
+### Functional operations
+```{r}
+## our version of lengths
+sapply(x, length)
+```
+
+```{r}
+lapply(x, length)
+```
+
+```{r}
+lapply(x, class)
+```
+
+```{r}
+lapply(x, mean)
+```
+
+`sapply` tries to turn the result list into a vector if all results have the same
+class/type. 
+
+```{r}
+sapply(x, class)
+```
