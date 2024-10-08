@@ -206,4 +206,45 @@ z <- c(1, -1)
 y + z
 ```
 
+### Other types
+#### Characters
+```{r}
+x <- seq(4, -2, -1)
+x
+y <- class(x)
+y
+```
+
+```{r}
+class(y)
+typeof(y)
+```
+
+```{r}
+z <- c("toto", "titi")
+class(z)
+typeof(z)
+z
+```
+
+In base R, "characters" are essentially monolithic. Use the `stringr` package to 
+access the characters themselves.
+
+```{r}
+z[1][1]
+```
+
+```{r}
+x <- seq(4, -2, -1)
+y <- as.character(x)
+y
+x + 2
+## does not work as y is not numeric: y + 2
+```
+
+```{r}
+x <- c("1.5", "12", "toto")
+y <- as.numeric(x)
+y
+```
 
