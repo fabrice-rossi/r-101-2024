@@ -1,0 +1,38 @@
+---
+title: "Low level R"
+author: "Fabrice Rossi"
+format: html
+---
+
+## R objects
+
+R has variables that are used to access objects:
+
+- functions
+- data
+
+### Functions
+
+A function provides an action over objects or R itself. 
+
+#### R related functions
+
+```{r}
+## this is the i_am function defined in the package here
+## in general package::function
+here::i_am("r-101-2024.Rproj")
+## library loads the functions defined in a package (here)
+library(here)
+```
+
+#### Functions that operate on objects
+
+```{r}
+class(1.0)
+class(class)
+```
+
+If `f` is a function, `f(...)` applies the function to its parameters while 
+`f` is the function as an object. 
+
+
