@@ -293,3 +293,32 @@ z <- seq(-5, 5)
 (z[2] > 4) | (z < 0) ## values are reused
 ```
 
+### Factors
+Factors are used to represented nominal and ordinal variables.
+
+```{r}
+z <- c("F", "F", "H", "F", "H")
+z
+class(z)
+y <- as.factor(z)
+y
+class(y)
+length(y)
+levels(y) ## modalities
+x <- levels(y)
+class(x)
+```
+
+```{r}
+z <- c("F", "F", "h", "F", "H")
+as.factor(z)
+y <- factor(z, levels = c("F", "H"))
+y
+```
+
+```{r}
+y == "F"
+y[-(1:3)]
+y + 2
+```
+
