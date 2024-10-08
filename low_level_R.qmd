@@ -322,3 +322,32 @@ y[-(1:3)]
 y + 2
 ```
 
+### Aggregation operators
+Aggregation operators are functions that map a vector to a single value, for instance
+the mean. 
+
+```{r}
+x <- seq(3, 12, 0.25)
+x
+```
+
+```{r}
+mean(x)
+min(x)
+max(x)
+sd(x)
+median(x)
+```
+
+```{r}
+any(x == 8) ## at least one TRUE
+all(x > 0) ## all TRUE
+```
+
+```{r}
+## scaling x to zero mean and one standard deviation
+y <- (x - mean(x)) / sd(x)
+y
+mean(y)
+sd(y)
+```
