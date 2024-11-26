@@ -479,6 +479,34 @@ if (x[1] < 0) {
 print("done")
 ```
 
+#### Application
+
+Conditional downloading: we want to download a large CSV file if it is not
+available locally. 
+
+```{r}
+library(vroom)
+source <- "https://www.data.gouv.fr/fr/datasets/r/69cf54c6-6591-4920-b1d6-2a5292964606"
+local_name <- "stops_france.csv.gz"
+local_dir <- "data"
+## is the directory available?
+if (!dir.exists(here(local_dir))) {
+  ## create the directory if needed
+  dir.create(here(local_dir))
+}
+## is the file available?
+if (!file.exists(here(local_dir, local_name))) {
+  ## we need to download it
+  spots_france <- vroom(source)
+  ## let's save the file to avoid useless downloading
+  vroom_write(spots_france, here(local_dir, local_name), delim = ",")
+} else {
+  ## we need only to load it
+  spots_france <- vroom(here(local_dir, local_name))
+}
+```
+
+
 ### Loops
 
 ```{r}
