@@ -479,3 +479,43 @@ if (x[1] < 0) {
 print("done")
 ```
 
+### Loops
+
+```{r}
+y <- c(0, 1e-5, 5, 10, -5, 4.5)
+toto <- "bla blb blb bl"
+for (toto in y) {
+  print(toto)
+  cat(toto, "\n")
+}
+print(toto)
+```
+
+```{r}
+library(ggplot2)
+data(diamonds)
+```
+
+```{r}
+diamond_cuts <- diamonds |>
+  pull(cut) |>
+  levels()
+```
+
+```{r}
+all_models <- vector(mode = "list", length = length(diamond_cuts))
+names(all_models) <- diamond_cuts
+for (one_cut in diamond_cuts) {
+  some_diamonds <- diamonds |>
+    filter(cut == one_cut) |>
+    select(!cut)
+  one_figure <- some_diamonds |> 
+    ggplot(aes(x = carat, y = price)) +
+    geom_bin2d() +
+    ggtitle(one_cut)
+  print(one_figure)
+  price_model <- glm(price ~ ., family = poisson(), data = some_diamonds)
+  print(summary(price_model))
+  all_models[[one_cut]] <- price_model
+}
+```
