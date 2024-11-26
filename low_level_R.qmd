@@ -423,3 +423,59 @@ class/type.
 ```{r}
 sapply(x, class)
 ```
+
+## Programming structures
+### if else
+#### Vector case
+
+```{r}
+x <- c(0, 1e-5, 5, 10)
+log(x)
+x * log(x)
+```
+
+```{r}
+ifelse(x > 0, x * log(x), 0)
+```
+
+```{r}
+y <- c(0, 1e-5, 5, 10, -5, 4.5)
+ifelse(y > 0, y * log(y), 0)
+```
+
+```{r}
+ifelse(y > 0, y * log(y), ifelse(y < 0, NaN, 0))
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+## if_else(x > 0, x * log(x), "0")
+ifelse(x > 0, x * log(x), "0")
+```
+
+```{r}
+case_when(y > 0 ~ y * log(y),
+  y == 0 ~ 0,
+  .default = NaN
+)
+```
+
+#### Programming instruction
+
+Curly braces {} are used to group instructions so that R considers the group
+as a single instruction. 
+
+```{r}
+x <- -5
+if (x[1] < 0) {
+  print("x*log(x) is not defined")
+  print(NaN)
+} else {
+  print(x[1] * log(x[1]))
+}
+print("done")
+```
+
