@@ -506,6 +506,29 @@ if (!file.exists(here(local_dir, local_name))) {
 }
 ```
 
+If the file is not a CSV file but in another format...
+```{r}
+library(httr2)
+library(readxl)
+votes_source <- "https://www.data.gouv.fr/fr/datasets/r/b0106806-0e40-40ee-8db0-53d8a02f0178"
+votes_name <- "votes_EU.csv.gz"
+if(!file.exists(here(local_dir, votes_name))) {
+  votes_req <- request(votes_source)
+  votes_xlsx <- votes_req |> req_perform()
+  votes_xlsx_file <- file(here(local_dir, "votes_EU.xlsx"),
+                          open = "wb",
+                          raw = TRUE)
+  writeBin(votes_xlsx |> resp_body_raw(), votes_xlsx_file)
+  close(votes_xlsx_file)
+  votes_EU_xls <- read_xlsx(here(local_dir, "votes_EU.xlsx"))
+  vroom_write(votes_EU_xls, here(local_dir, votes_name), delim=",")
+  votes_EU <- vroom(here(local_dir, votes_name))
+} else {
+  votes_EU <- vroom(here(local_dir, votes_name))
+}
+
+```
+
 
 ### Loops
 
